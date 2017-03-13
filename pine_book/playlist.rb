@@ -129,7 +129,6 @@ end
 
 
 
-=begin
 # 11. Exercise: Build a better playlist -> shuffle with a better algorithm
 
 # "merge" is one solution for the ~perfect shuffle (similar to my "Durchmischungsproblem")
@@ -210,4 +209,3 @@ end
 read_playlist = File.read("#{playlist_name}.m3u")
 puts read_playlist
 puts 'Playlist created!'
-=end

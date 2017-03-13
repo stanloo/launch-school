@@ -1,0 +1,21 @@
+# calculator_messages.yml
+en:
+  welcome: "Welcome to Calculator! Enter your name:"
+  valid_name: "Make sure to enter a valid name."
+  hello: "Hi, %{name}" # Important! % instead of # here !!!
+  first_number: "What's the first number?"
+  second_number: "What's the second number?"
+  invalid_number: "This is not a valid number. Please try again."
+  operation: |
+    What operation would you like to perform?
+    1) add
+    2) subtract
+    3) multiply
+    4) divide
+  divide_through_zero: "Can't divide through zero. Choose another operation."
+  invalid_operation: "This is not a valid operation. Please try again."
+  another_calculation: "Type 'Y' to perform another calculation."
+  goodbye: "Bye!"
+es:
+  welcome: "Bienvenido a la calculadora! Entre su nombre:"
+  valid_name: "Asegúrese de entrar un nombre válido."
