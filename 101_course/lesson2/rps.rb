@@ -56,7 +56,7 @@ def prompt(message)
   puts "=> #{message}"
 end
 
-def get_user_choice()
+def user_choice
   loop do
     input = gets.chomp
     if CHOICES.key?(input)
@@ -67,7 +67,7 @@ def get_user_choice()
   end
 end
 
-def get_computer_choice()
+def computer_choice
   rand(1..CHOICES.size)
 end
 
@@ -96,7 +96,7 @@ def display_results(user_int, computer_int)
   prompt(result)
 end
 
-def continue_game?()
+def continue_game?
   loop do
     input = gets.chomp.downcase
     case input
@@ -116,11 +116,11 @@ loop do
     3 for scissors
     4 for well
   MSG
-  user_int = get_user_choice()
-  
-  computer_int = get_computer_choice()
+  user_int = user_choice()
+
+  computer_int = computer_choice()
   display_results(user_int, computer_int)
-  
+
   prompt('Want to play another game? y/n')
   continue_game = continue_game?()
   break unless continue_game

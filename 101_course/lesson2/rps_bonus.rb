@@ -68,7 +68,7 @@ def user_choice
   loop do
     input = gets.chomp
     if CHOICES.key?(input)
-      then break input.to_i
+      break input.to_i
     else
       prompt('Not valid')
     end
@@ -121,8 +121,8 @@ def continue_game?
 end
 
 # Start program execution
-prompt("Let's play! Whoever reaches 5 points, wins. Good luck!")
 loop do
+  prompt("Let's play! Whoever reaches 5 points, wins. Good luck!")
   puts <<-MSG
     => Your choice:
     1 for rock
@@ -148,7 +148,11 @@ loop do
     user_points = 0
     computer_points = 0
     prompt('Want to play another game? y/n')
-    break prompt('Thank you for playing!') unless continue_game?()
+    if continue_game?()
+      puts %x{clear}
+    else
+      break prompt('Thank you for playing!')
+    end
   else
     display_standing(user_points, computer_points)
   end

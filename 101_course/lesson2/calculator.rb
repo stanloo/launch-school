@@ -4,16 +4,12 @@ require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 LANGUAGE = 'en'
 
-def messages(key, var, var_name)
-  if var
-    MESSAGES[LANGUAGE][key] % { var_name.to_sym => var } # See line 50
-  else
-    MESSAGES[LANGUAGE][key]
-  end
+def messages(key, subst)
+  MESSAGES[LANGUAGE][key] % subst
 end
 
-def prompt(key, var=nil, var_name=nil)
-  message = messages(key, var, var_name)
+def prompt(key, subst={})
+  message = messages(key, subst)
   puts "=> #{message}"
 end
 
@@ -47,14 +43,13 @@ name = loop do
   end
 end
 
-# We can't use #{} in YAML, there is the following workaround however:
-prompt('hello', name, 'name')
-# We have to provide a variable and the variable name additionally (see line 9)
+# We can't use #{} in YAML, there is the following workaround however with %{}:
+prompt('hello', { name: name })
+# We can also user multiple arguments in the hash
 # We do that based on this example: https://launchschool.com/posts/c6b71114
+# And based especially on the implementation of Ben Rodenhaeuser:
+### https://launchschool.com/posts/aa22df1f
 # See also string method https://ruby-doc.org/core-2.2.0/String.html#method-i-25
-# All in all, I feel like this is too much effort and we can use normal puts
-### Especially if we would have more than 1 interpolated variables or...
-### ... even a method with it's own arguments AS ARGUMENTS OF THE PROMPT
 
 loop do
   number1 = loop do
@@ -100,8 +95,11 @@ loop do
     result = number1.to_f / number2.to_f
   end
 
-  puts "#{operation_to_message(operator)} the two numbers..."
-  puts "The result is #{result}"
+  operation = operation_to_message(operator)
+  # We can't put "operation_to_message(operator)" in the next prompt,...
+  # ... that's why we assign it to a variable
+  prompt('operation_to_message', { operation: operation })
+  prompt('result', { result: result })
 
   prompt('another_calculation')
   again = gets.chomp

@@ -14,6 +14,8 @@ en:
     4) divide
   divide_through_zero: "Can't divide through zero. Choose another operation."
   invalid_operation: "This is not a valid operation. Please try again."
+  operation_to_message: "%{operation} the two numbers..."
+  result: "The result is %{result}"
   another_calculation: "Type 'Y' to perform another calculation."
   goodbye: "Bye!"
 es:
