@@ -5,9 +5,9 @@
 
 1. Understanding the Problem
 - input:
-...
+--- ...
 - output:
-...
+--- ...
 
 2. Examples / Test Cases
 - ALLE
@@ -68,3 +68,7 @@
 
 
 =end
+
+def prompt(message)
+  puts "=> #{message}"
+end

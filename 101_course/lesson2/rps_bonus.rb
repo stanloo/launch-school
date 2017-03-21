@@ -149,7 +149,7 @@ loop do
     computer_points = 0
     prompt('Want to play another game? y/n')
     if continue_game?()
-      puts %x{clear}
+      puts %x{clear} # Issues a CLI command, clears screen
     else
       break prompt('Thank you for playing!')
     end
